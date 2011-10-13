@@ -2,5 +2,5 @@
 
 if __FILE__ == $0 then
   exit unless s = ARGV.shift
-  puts Dir.glob("*"+s+"*").sort.select { |e| FileTest.directory? e }.first.to_s
+  puts Dir.glob("*"+s+"*").select { |e| FileTest.directory? e }.first.to_s
 end
