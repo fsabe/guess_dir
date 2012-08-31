@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+exit unless s = ARGV.shift
+puts Dir.glob("*"+s+"*", File::FNM_CASEFOLD).select { |e| FileTest.directory? e }.first.to_s
