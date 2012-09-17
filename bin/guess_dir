@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
 
-exit unless s = ARGV.shift
-puts Dir.glob("*"+s+"*", File::FNM_CASEFOLD).select { |e| FileTest.directory? e }.first.to_s
+unless s = ARGV.shift
+  puts 'Usage: %s [search string]' % $0.split('/').last
+  exit 1
+end
+
+puts Dir.glob('*%s*' % s, File::FNM_CASEFOLD).select { |e| FileTest.directory? e }.first.to_s
