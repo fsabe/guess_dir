@@ -5,4 +5,17 @@ unless s = ARGV.shift
   exit 1
 end
 
-puts Dir.glob('*%s*' % s, File::FNM_CASEFOLD).select { |e| FileTest.directory? e }.first.to_s
+def guess(s)
+  Dir.glob('*%s*' % s, File::FNM_CASEFOLD).select { |e| FileTest.directory? e }
+end
+
+def guess_recursive(parts)
+  return [Dir.pwd] if parts.empty?
+  guess(parts.first).map { |guess|
+    Dir.chdir(guess) {
+      guess_recursive(parts[1..-1])
+    }
+  }.flatten
+end
+
+puts guess_recursive(s.split('/')).first

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "guess_dir"
-  s.version     = "0.0.1"
+  s.version     = "0.1.0"
   s.authors     = ["Flavio Schiavini Abe"]
   s.email       = ["flaviosabe@gmail.com"]
   s.homepage    = "http://github.com/fsabe"
